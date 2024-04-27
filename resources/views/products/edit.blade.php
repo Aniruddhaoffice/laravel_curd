@@ -43,11 +43,13 @@
         <div class="row justify-content-center">
             <div class="col-sm-8">
                 <div class="card custom-card m-3 p-3 ">
+                    <h3>Product edit #{{$product->name}}</h3>
                     <form method="POST" action="/products/store" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group custom-form">
                             <label for="name">Name:</label>
-                            <input type="text" name="name" class="form-control" id="name" value="{{old('name')}}" />
+                            <input type="text" name="name" class="form-control" id="name"
+                                value="{{old('name', $product ->name)}}" />
                             @if($errors->has('name'))
                             <span class="text-danger">{{$errors->first('name')}}</span>
                             @endif
@@ -55,7 +57,7 @@
                         <div class="form-group custom-form">
                             <label for="name">Description:</label>
                             <textarea name="description" id="" rows="4" class="form-control"
-                                value="{{old('description')}}"></textarea>
+                                value="{{old('description', $product ->description)}}"></textarea>
                             @if($errors->has('description'))
                             <span class="text-danger">{{$errors->first('description')}}</span>
                             @endif
